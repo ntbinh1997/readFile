@@ -1,4 +1,7 @@
-public class FileXML extends ImportFile {
+import java.nio.file.Path;
+import java.util.List;
+
+public class FileXML extends ImportFile implements FileInput {
     public FileXML() {
     }
 
@@ -8,7 +11,7 @@ public class FileXML extends ImportFile {
     }
 
     @Override
-    public void importFile() {
+    public void createWatchService() {
     }
 
     @Override
@@ -17,5 +20,30 @@ public class FileXML extends ImportFile {
 
     @Override
     public void getInfoFromFile() {
+    }
+
+    @Override
+    public void setPath(Path path) {
+
+    }
+
+    @Override
+    public List<Company> getListCompany() {
+        return null;
+    }
+
+    @Override
+    public Path getPath() {
+        return null;
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void run() {
+
     }
 }
