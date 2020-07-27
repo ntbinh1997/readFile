@@ -1,12 +1,15 @@
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 class Company {
     private int id;
     private String name;
-    private String date;
+    private LocalDate date;
     private int capital;
     private String country;
     private Integer headQuarterID;
 
-    public Company(int id, String name, String date, int capital, String country, Integer headQuarterID) {
+    public Company(int id, String name, LocalDate date, int capital, String country, Integer headQuarterID) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -31,11 +34,11 @@ class Company {
         this.name = name;
     }
 
-    public String getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

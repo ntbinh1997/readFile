@@ -5,17 +5,14 @@ public class FileXLSX extends ImportFile {
     }
 
     @Override
-    public boolean importFile() {
-        return false;
+    public void importFile() {
     }
 
     @Override
-    public boolean readFile() {
-        return false;
+    public void readFile() {
     }
 
     @Override
-    public boolean getInfoFromFile() {
-        return false;
+    public void getInfoFromFile() {
     }
 }
