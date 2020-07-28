@@ -38,13 +38,12 @@ public class Main {
             choice = menu();
             switch (choice){
                 case 1: {
-                    Path pathInput = Paths.get("D:\\test\\ex.csv");
+                    Path pathInput = Paths.get("D:\\test\\companies_big_data.zip");
                     file.setPath(pathInput);
                     file.process();
                     if (!t1.isAlive()){
                         t1.start();
                     }
-
                     break;
                 }
 

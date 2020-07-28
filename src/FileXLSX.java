@@ -4,8 +4,7 @@ import java.util.List;
 public class FileXLSX extends ImportFile implements FileInput {
 
     @Override
-    public boolean checkZipFile() {
-        return false;
+    public void checkZipFile() {
     }
 
     @Override
@@ -14,10 +13,6 @@ public class FileXLSX extends ImportFile implements FileInput {
 
     @Override
     public void readFile() {
-    }
-
-    @Override
-    public void getInfoFromFile() {
     }
 
     @Override

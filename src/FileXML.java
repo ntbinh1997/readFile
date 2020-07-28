@@ -5,9 +5,7 @@ public class FileXML extends ImportFile implements FileInput {
     public FileXML() {
     }
 
-    @Override
-    public boolean checkZipFile() {
-        return false;
+    public void checkZipFile() {
     }
 
     @Override
@@ -16,10 +14,6 @@ public class FileXML extends ImportFile implements FileInput {
 
     @Override
     public void readFile() {
-    }
-
-    @Override
-    public void getInfoFromFile() {
     }
 
     @Override

@@ -1,0 +1,19 @@
+Spring core:
+- bean; life cycle + bean scope
+- dependency injection + invert of control
+- @Autowired/@Qualifier/@Primary/@Value
+- @Component/@Service/@Controller/@Repository/@Bean/@Configuration
+Spring web: section 7
+- MVC
+- Servlet
+- all annotation in section 7
+- Restful
+@RequestMapping / @RequestParam
+@RequestBody / @ResponseBody
+@ModelAttribute / @SessionAttributes
+@InitBinder
+
+instant 
+- lay mui gio 0
+date
+- lay mui gio cua may
