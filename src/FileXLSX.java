@@ -1,13 +1,9 @@
 import java.nio.file.Path;
 
-public class FileXLSX extends ImportFile implements FileInput {
+public class FileXLSX extends ImportFile {
 
-    @Override
-    public void checkZipFile() {
-    }
-
-    @Override
-    public void readFile() {
-    }
+	@Override
+	public void readFile() {
+	}
 
 }

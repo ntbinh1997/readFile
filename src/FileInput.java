@@ -2,13 +2,13 @@ import java.nio.file.Path;
 import java.util.List;
 
 public interface FileInput {
-    void process();
+	void process();
 
-    void update();
+	void update();
 
-    void setPath(Path path);
+	void setPath(Path path);
 
-    List<Company> getListCompany();
+	List<Company> getListCompany();
 
-    Path getPath();
+	Path getPath();
 }

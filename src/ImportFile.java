@@ -1,18 +1,22 @@
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-import static java.nio.file.StandardCopyOption.*;
+import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
 public abstract class ImportFile implements FileInput {
     protected List<Company> listCompany = new ArrayList<>();
     protected Path path = null;
+    private static final int NUMFIVE = 5;
+    private static final int NUMSIX = 6;
+
 
     public void setPath(Path path) {
         this.path = path;
@@ -22,7 +26,7 @@ public abstract class ImportFile implements FileInput {
         return path;
     }
 
-    public void checkZipFile() {
+    private void checkZipFile() {
         File fileInput = new File(path.toString());
         if (fileInput.exists() && fileInput.getName().endsWith(".zip")) {
             try (ZipInputStream zipFile = new ZipInputStream(new FileInputStream(fileInput))) {
@@ -47,7 +51,7 @@ public abstract class ImportFile implements FileInput {
 
     }
 
-    public abstract void readFile();
+    protected abstract void readFile();
 
     public List<Company> getListCompany() {
         return this.listCompany;
@@ -59,10 +63,15 @@ public abstract class ImportFile implements FileInput {
         int day = 1;
         int month = 1;
         int year;
-        if (metadata.length != 6 && metadata.length != 5) {
+        int id;
+        int headQuarterID = 0;
+        LocalDate date;
+        int capital;
+
+        if (metadata.length != NUMFIVE && metadata.length != NUMSIX) {
             return null;
         }
-        int id = Integer.parseInt(metadata[0]);
+        id = Integer.parseInt(metadata[0]);
         String name = metadata[1];
         if (metadata[2].contains(DOT)) {
             String[] daytime = metadata[2].split("\\.");
@@ -72,10 +81,9 @@ public abstract class ImportFile implements FileInput {
         } else {
             year = Integer.parseInt(metadata[2]);
         }
-        LocalDate date = LocalDate.of(year, month, day);
-        int capital = Integer.parseInt(metadata[3]);
+        date = LocalDate.of(year, month, day);
+        capital = Integer.parseInt(metadata[3]);
         String country = metadata[4];
-        int headQuarterID = -1;
         if (metadata.length == 6) {
             headQuarterID = Integer.parseInt(metadata[5]);
         }
