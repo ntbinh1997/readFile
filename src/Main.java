@@ -16,21 +16,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-	public static void showResult(List<Company> companyList) {
-		System.out.println("Country = CH");
-		companyList.stream()
-				.filter(x -> x.getCountry().equals("CH"))
-				.map(Company::getCapital)
-				.sorted(Comparator.reverseOrder())
-				.forEach(System.out::println);
-
-		System.out.println("Country = ZH");
-		companyList.stream()
-				.filter(x -> x.getCountry().equals("ZH"))
-				.map(Company::getName)
-				.forEach(System.out::println);
-	}
-
 
 	public static int menu() {
 		System.out.println("MENU");
@@ -51,7 +36,6 @@ public class Main {
 		Path pathInput = Paths.get("D:\\test\\ex.csv");
 		file.setPath(pathInput);
 		file.process();
-		showResult(file.getListCompany());
 		observable.createWatchService();
 
 	}
