@@ -1,23 +1,15 @@
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.nio.file.*;
-import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-public class FileCSV extends ImportFile implements FileInput {
+public class FileCSV extends ImportFile {
 
     public static final String COMMA = ",";
 
-    public void setPath(Path path) {
-        this.path = path;
-    }
-
-    public Path getPath() {
-        return path;
-    }
-
     @Override
     public void readFile() {
-        try (BufferedReader buf = Files.newBufferedReader(path)) {
+        try (BufferedReader buf = Files.newBufferedReader(path.toAbsolutePath())) {
             String line = buf.readLine();
             while (line.contains("ID") || line.contains("sep=")) {
                 line = buf.readLine();
@@ -37,8 +29,4 @@ public class FileCSV extends ImportFile implements FileInput {
 
     }
 
-    @Override
-    public void run() {
-        createWatchService();
-    }
 }

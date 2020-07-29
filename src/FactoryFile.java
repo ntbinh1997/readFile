@@ -1,5 +1,5 @@
 public class FactoryFile {
-    public FileInput creatFile(Main.FILE filestype) {
+    public FileInput creatFile(FILE filestype) {
         switch (filestype) {
             case FILECSV:
                 return new FileCSV();

@@ -1,14 +1,14 @@
 import java.nio.file.Path;
 import java.util.List;
 
-public interface FileInput extends Runnable {
+public interface FileInput {
     void process();
+
+    void update();
 
     void setPath(Path path);
 
     List<Company> getListCompany();
 
     Path getPath();
-
-    void update();
 }

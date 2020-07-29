@@ -7,11 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+
 import static java.nio.file.StandardCopyOption.*;
 
-public abstract class ImportFile implements FileInput, Runnable  {
+public abstract class ImportFile implements FileInput {
     protected List<Company> listCompany = new ArrayList<>();
     protected Path path = null;
+
+    public void setPath(Path path) {
+        this.path = path;
+    }
+
+    public Path getPath() {
+        return path;
+    }
 
     public void checkZipFile() {
         File fileInput = new File(path.toString());
@@ -34,29 +43,9 @@ public abstract class ImportFile implements FileInput, Runnable  {
     public void update() {
         listCompany.clear();
         readFile();
-        Main.menu();
-    }
+        Main.showResult(listCompany);
 
-    public void createWatchService(){
-        try (WatchService watchService = FileSystems.getDefault().newWatchService()) {
-            WatchKey watchKey;
-            Path pathNeedWatch = path.getParent();
-            pathNeedWatch.register(watchService,
-                    StandardWatchEventKinds.ENTRY_CREATE, StandardWatchEventKinds.ENTRY_MODIFY,
-                    StandardWatchEventKinds.ENTRY_DELETE, StandardWatchEventKinds.OVERFLOW);
-            while ((watchKey = watchService.take()) != null) {
-                for (WatchEvent<?> event : watchKey.pollEvents()) {
-                    System.out.println(
-                            "Event kind:" + event.kind()
-                                    + ". File affected: " + event.context() + " Import new file");
-                    update();
-                }
-                watchKey.reset();
-            }
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
-        }
-    };
+    }
 
     public abstract void readFile();
 
@@ -69,9 +58,8 @@ public abstract class ImportFile implements FileInput, Runnable  {
     public Company createCompany(String[] metadata) {
         int day = 1;
         int month = 1;
-        int year = 0;
-
-        if (metadata.length != 6 && metadata.length != 5){
+        int year;
+        if (metadata.length != 6 && metadata.length != 5) {
             return null;
         }
         int id = Integer.parseInt(metadata[0]);
@@ -97,7 +85,6 @@ public abstract class ImportFile implements FileInput, Runnable  {
     @Override
     public final void process() {
         checkZipFile();
-        createWatchService();;
         readFile();
     }
 }
