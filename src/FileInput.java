@@ -8,7 +8,5 @@ public interface FileInput {
 
 	void setPath(Path path);
 
-	List<Company> getListCompany();
-
 	Path getPath();
 }

@@ -37,6 +37,17 @@ public class FileCSV  extends ImportFile <String> {
     }
 
     @Override
+    protected Company createCompanyLite(String[] metadata) {
+        if (metadata.length != 5 && metadata.length != 6) {
+            return null;
+        }
+        String name = metadata[1];
+        int capital = Integer.parseInt(metadata[3]);
+        String country = metadata[4];
+        return new Company(capital, country, name);
+    }
+
+    @Override
     public void readFile() {
         try (BufferedReader buf = Files.newBufferedReader(path.toAbsolutePath())) {
             String line = buf.readLine();
@@ -45,7 +56,7 @@ public class FileCSV  extends ImportFile <String> {
             }
             while (line != null) {
                 String[] companyDetail = line.split(SPLITSTRINGCSV);
-                Company company = createCompany(companyDetail);
+                Company company = createCompanyLite(companyDetail);
                 if (company != null) {
                     listCompany.add(company);
                 }

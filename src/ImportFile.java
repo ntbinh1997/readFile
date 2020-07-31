@@ -42,6 +42,8 @@ public abstract class ImportFile <T> implements FileInput {
 
     protected abstract Company createCompany(T[] metadata);
 
+    protected abstract Company createCompanyLite(T[] metadata);
+
     public void update() {
         listCompany.clear();
         readFile();
@@ -51,10 +53,6 @@ public abstract class ImportFile <T> implements FileInput {
     protected abstract void readFile();
 
     protected abstract void showResult();
-
-    public List<Company> getListCompany() {
-        return this.listCompany;
-    }
 
 
     @Override

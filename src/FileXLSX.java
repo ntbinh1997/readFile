@@ -8,6 +8,11 @@ public class FileXLSX extends ImportFile <String> {
 	}
 
 	@Override
+	protected Company createCompanyLite(String[] metadata) {
+		return null;
+	}
+
+	@Override
 	public void readFile() {
 	}
 

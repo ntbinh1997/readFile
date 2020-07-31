@@ -1,4 +1,7 @@
 public class FactoryFile {
+	public FactoryFile() {
+	}
+
 	public FileInput creatFile(FILE filestype) {
 		switch (filestype) {
 			case FILECSV:

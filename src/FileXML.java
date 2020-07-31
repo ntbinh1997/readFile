@@ -8,6 +8,11 @@ public class FileXML <String> extends ImportFile{
 	}
 
 	@Override
+	protected Company createCompanyLite(Object[] metadata) {
+		return null;
+	}
+
+	@Override
 	public void readFile() {
 	}
 

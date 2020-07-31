@@ -18,6 +18,12 @@ class Company {
 		this.headQuarterID = headQuarterID;
 	}
 
+	public Company(int capital,String country, String name){
+		this.capital = capital;
+		this.country = country;
+		this.name = name;
+	}
+
 	public int getId() {
 		return id;
 	}
